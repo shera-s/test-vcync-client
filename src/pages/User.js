@@ -115,7 +115,7 @@ const User = () => {
 
       <div className="bg-grey-lighter min-h-screen flex flex-col">
       <div className="container max-w-lg mx-auto flex-1 flex flex-col items-center justify-center">
-        <div className="bg-white px-2 py-8 rounded shadow-md text-black w-full">
+        <div className="bg-white px-1 py-8 rounded shadow-md text-black w-full">
           <h3 className="mb-1 text-2xl text-center font-bold">
             {t('Hi')} {user?.name}
           </h3>
@@ -170,7 +170,7 @@ const User = () => {
               <>
                 <button
                   onClick={() => setShowError("To View Profile Build It first")}
-                  className=" py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className=" py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaEye className="w-8 inline" />
                   <span className="w-full text-center">{t('View_profile')}</span>
@@ -179,7 +179,7 @@ const User = () => {
                   onClick={() =>
                     setShowError(t('To_Copy_Profile_Link_Build_It_first'))
                   }
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaCopy className="w-8 inline" />
                   <span className="w-full text-center">{t('Copy_profile_link')}</span>
@@ -190,7 +190,7 @@ const User = () => {
                 <button
                   onClick={() => navigate(`/${data?.getProfilebyId?.user_id}`)}
                   type="submit"
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaEye className="w-8 inline" />
                   <span className="w-full text-center">{t('View_profile')}</span>
@@ -203,7 +203,7 @@ const User = () => {
                     setTimeout(() => setCopyLink('Copy_profile_link'),500);
                   }}
                   type="button"
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaCopy className="w-8 inline" />
                   <span className="w-full text-center">{t(copyLink)}</span>
@@ -220,14 +220,14 @@ const User = () => {
                   onClick={() =>
                     setShowError(t('To_Save_Qr_Code_Build_Profile_first'))
                   }
-                  className=" py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className=" py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaQrcode className="w-8 inline" />
                   <span className="w-full text-center">{t('Save_QR_code')}</span>
                 </button>
                 <button
                   onClick={() => setShowError(t('To_Enable_Build_Profile_first'))}
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaPowerOff className="w-8 inline" />
                   <span className="w-full text-center">{t('Enable_Profile')}</span>
@@ -237,14 +237,14 @@ const User = () => {
               <>
                 <button
                   onClick={saveQrCode}
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaQrcode className="w-8 inline" />
                   <span className="w-full text-center">{t('Save_QR_code')}</span>
                 </button>
                 <button
                   onClick={disableProfiles}
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-zinc-900 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-zinc-900 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaPowerOff className="w-8 inline" />
                   <span className="w-full text-center">{t(disable)}</span>
@@ -254,14 +254,14 @@ const User = () => {
               <>
                 <button
                   onClick={saveQrCode}
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaQrcode className="w-8 inline" />
                   <span className="w-full text-center">{t('Save_QR_code')}</span>
                 </button>
                 <button
                   onClick={enableProfiles}
-                  className="py-3 px-1  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+                  className="py-3 px-2  rounded-xl inline-flex items-center  bg-green-700 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
                 >
                   <FaPowerOff className="w-8 inline" />
                   <span className="w-full text-center">{t(enable)}</span>
@@ -297,7 +297,7 @@ const User = () => {
             <button
               onClick={logout}
               type="submit"
-              className="px-1 text-xl font-medium text-zinc-900 hover:text-green-900 focus:outline-none my-1 mt-4"
+              className="px-2 text-xl font-medium text-zinc-900 hover:text-green-900 focus:outline-none my-1 mt-4"
             >
               {t('Logout')}
             </button>
