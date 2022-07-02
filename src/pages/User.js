@@ -286,7 +286,7 @@ const User = () => {
             <button
             onClick={()=>console.log('Feature on the Way...')}
               type="submit"
-              className=" py-3 px-1 rounded-xl inline-flex items-center bg-zinc-800 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+              className=" py-3 px-4 rounded-xl inline-flex items-center bg-zinc-800 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
             >
               <FaWallet className="w-12 inline" />
               {t('Add_To_Apple_Wallet')}
