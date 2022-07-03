@@ -111,9 +111,9 @@ const User = () => {
   
   const addtowallet= async(e)=>{
     console.log('Feature on the way...')
-    console.log(downdata)
+    // console.log(downdata)
     if(downdata){
-      downloadFile(downdata.generatepkpass)
+      // downloadFile(downdata.generatepkpass)
     }
   }
 
