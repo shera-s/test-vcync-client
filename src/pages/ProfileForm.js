@@ -225,7 +225,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
       }
       // console.log(data);
 
-        // window.location.href = "/";
+        window.location.href = "/";
       // navigate("/", { replace: true })
     } catch (error) {
       return setShowError(error);
