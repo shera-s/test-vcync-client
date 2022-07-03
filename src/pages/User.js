@@ -25,7 +25,7 @@ const User = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => Object.values(state.user)[0]);
   const navigate = useNavigate();
-  const [showError, setShowError] = useState(false);
+  const [showError, setShowError] = useState();
   const [enable, setEnable] = useState('Enable_Profile');
   const [disable, setDisable] = useState('Disable_Profile');
   const [copyLink, setCopyLink] = useState('Copy_profile_link');
@@ -177,7 +177,7 @@ const User = () => {
             </button>
           </div>
 
-          <p className="mt-4 mb-4 text-red-700 text-center ">{showError}</p>
+          <p className="mt-4 mb-4 text-red-700 text-center ">{t(showError)}</p>
 
           <div className="grid grid-cols-2 gap-2 ">
             {Object.keys(data)?.length < 1 ||
