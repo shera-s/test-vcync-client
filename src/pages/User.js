@@ -302,7 +302,7 @@ const User = () => {
             Object.keys(Profile)?.length === 0 ? (
               <>
             <button
-            onClick={()=>setShowError(t('To_Save_Qr_Code_Build_Profile_first'))}
+            onClick={()=>setShowError(t('To_Add_To_Wallet_Build_Profile_first'))}
               type="submit"
               className=" py-3 px-4 rounded-xl inline-flex items-center bg-zinc-800 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
             >
