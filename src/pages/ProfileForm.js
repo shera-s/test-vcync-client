@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaLongArrowAltLeft, FaTrash } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PROFILE } from "../config/gql/mutations";
+import { PROFILE , UPDATE_USER} from "../config/gql/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import Resizer from "react-image-file-resizer";
 import { GET_PROFILE } from "../config/gql/queries";
@@ -15,7 +15,7 @@ const ProfileForm = () => {
   const user_id = localStorage.getItem("id");
 
   //   const { data, refetch } = useQuery(GET_PROFILE, { variables: { id: user_id }, notifyOnNetworkStatusChange: true, })
-
+  const user = useSelector((state) => Object.values(state.user)[0]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {enable,extraInfo,socialData,userDetails,profiletype} = useSelector((state) => state.Profile);
@@ -51,7 +51,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
   
   const qrCode = `${window.location.origin}/${user_id}`;
 
-  // console.log(data)
+  // console.log(user)
     // console.log(userDetails)
   // var dataFields
 
@@ -60,10 +60,10 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
   // }
   const [formDetails, setFormdetails] = useState({
     user_id: user_id,
-    firstName: userDetails && userDetails[0].firstName || '',
+    firstName: userDetails && userDetails[0].firstName || user?.name || '',
     lastName: userDetails && userDetails[0].lastName || '',
-    workEmail: userDetails && userDetails[0].workEmail || '',
-    workPhone: userDetails && userDetails[0].workPhone || '',
+    workEmail: userDetails && userDetails[0].workEmail || user?.email || '',
+    workPhone: userDetails && userDetails[0].workPhone || user?.phoneNumber || '',
     organization: userDetails && userDetails[0].organization || '',
     title: userDetails && userDetails[0].title || '',
     photo: userDetails && userDetails[0].photo || '',
@@ -75,6 +75,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
   // console.log(formDetails)
 
   const [Profile, { loading }] = useMutation(PROFILE);
+  const [updateUser, {error}] = useMutation(UPDATE_USER);
 
   // if (loading) return <Preloader />
 
@@ -200,13 +201,31 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
       const {data} = await Profile({
         variables: { profile: profileFields },
       });
+      if(data){
+
+        dispatch({
+          type: "PROFILE",
+          payload: data.Profile,
+        });
+      }
+      const userFields = {
+        name:formDetails.firstName,
+        phoneNumber:formDetails.workPhone,
+        email:formDetails.workEmail
+      }
+      const {data:updateuserdata} = await updateUser({
+        variables: { id:user_id,user:userFields },
+      });
+      if(updateuserdata){
+
+        dispatch({
+          type: "SETUSER",
+          payload: updateuserdata,
+        });
+      }
       // console.log(data);
 
-      dispatch({
-        type: "PROFILE",
-        payload: data.Profile,
-      });
-        window.location.href = "/";
+        // window.location.href = "/";
       // navigate("/", { replace: true })
     } catch (error) {
       return setShowError(error);

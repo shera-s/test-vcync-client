@@ -48,6 +48,17 @@ const SIGN_UP = gql`
     }
   }
 `;
+const UPDATE_USER= gql`
+  mutation User($id:ID,$user:UserInput){
+    updateUser(id:$id,user:$user){
+      id
+      email
+      name
+      phoneNumber
+      verified
+    }
+  }
+`
 const FORGOT_PASS = gql`
   mutation ForgotPass($user: forgotPass) {
     forgotPass(user: $user) {
@@ -133,4 +144,5 @@ export {
   PROFILE,
   DISABLE_PROFILE,
   ENABLE_PROFILE,
+  UPDATE_USER
 };

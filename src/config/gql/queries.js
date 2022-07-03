@@ -48,5 +48,13 @@ query ($id:ID){
   }
 }
 `
+const DOWN_PKPASS = gql`
+query ($id:ID){
+  generatepkpass(id:$id){
+    firstName
+    file
+  }
+}
+`
 
-export { USERS, GET_PROFILE , DOWN_VCF};
+export { USERS, GET_PROFILE , DOWN_VCF, DOWN_PKPASS};

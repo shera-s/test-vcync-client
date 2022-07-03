@@ -11,11 +11,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import QRCode from "react-qr-code";
 import { DISABLE_PROFILE, ENABLE_PROFILE } from "../config/gql/mutations";
-import { GET_PROFILE } from "../config/gql/queries";
+import { GET_PROFILE, DOWN_PKPASS } from "../config/gql/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import Preloader from "../components/Preloader";
 import { useEffect, useState } from "react";
 import { useTranslation} from "react-i18next";
+import FileSaver from 'file-saver';
 
 
 const User = () => {
@@ -36,14 +37,16 @@ const User = () => {
     variables: { id: id },
     notifyOnNetworkStatusChange: true,
   });
-  
+  const {data:downdata} = useQuery(DOWN_PKPASS, {
+    variables: { id: id },
+  });
+
   useEffect(() => {
     if(data?.getProfilebyId){
       dispatch({
         type: "PROFILE",
         payload: data.getProfilebyId,
       });
-
   }
 }, [data])
 
@@ -100,6 +103,18 @@ const User = () => {
     };
     img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
   };
+
+  const downloadFile = (data) => {
+    var blob = new Blob([data.file], {type: "application/zip"});
+    FileSaver.saveAs(blob, `${data.firstName}.pkpass`);
+  }
+  
+  const addtowallet= async(e)=>{
+    console.log('Feature on the way...')
+    if(downdata){
+      downloadFile(downdata.generatepkpass)
+    }
+  }
 
   const logout = (e) => {
     e.preventDefault();
@@ -283,14 +298,27 @@ const User = () => {
           <div className="border-t-4 rounded-full border-zinc-500 my-9"></div>
 
           <div className="text-center mb-7">
+          {Object.keys(data)?.length < 1 ||
+            Object.keys(Profile)?.length === 0 ? (
+              <>
             <button
-            onClick={()=>console.log('Feature on the Way...')}
+            onClick={()=>setShowError(t('To_Save_Qr_Code_Build_Profile_first'))}
               type="submit"
               className=" py-3 px-4 rounded-xl inline-flex items-center bg-zinc-800 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
             >
               <FaWallet className="w-12 inline" />
               {t('Add_To_Apple_Wallet')}
             </button>
+            </>) : <>
+            <button
+            onClick={()=>addtowallet()}
+              type="submit"
+              className=" py-3 px-4 rounded-xl inline-flex items-center bg-zinc-800 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
+            >
+              <FaWallet className="w-12 inline" />
+              {t('Add_To_Apple_Wallet')}
+            </button>
+            </>}
           </div>
 
           <div className="text-center">

@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import Preloader from "../components/Preloader";
 import { useEffect } from "react";
 import { useTranslation} from "react-i18next";
-var FileSaver = require('file-saver');
+import FileSaver from 'file-saver';
 
 
 const Profile = () => {
