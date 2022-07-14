@@ -17,7 +17,8 @@ import Preloader from "../components/Preloader";
 import { useEffect, useState } from "react";
 import { useTranslation} from "react-i18next";
 import FileSaver from 'file-saver';
-
+// import Buffer from 'buffer';
+window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 const User = () => {
   const {t}=useTranslation()
@@ -105,15 +106,29 @@ const User = () => {
   };
 
   const downloadFile = (data) => {
-    var blob = new Blob([data.file], {type: "application/zip"});
-    FileSaver.saveAs(blob, `${data.firstName}.pkpass`);
+    fetch( data.file, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/vnd.apple.pkpass',
+    },
+  })
+  .then((response) => response.blob())
+  .then((blob) => {
+    const url = window.URL.createObjectURL(
+      new Blob([blob]),
+    );
+    const downloadLink = document.createElement("a");
+    downloadLink.download = data.firstName+'.pkpass';
+    downloadLink.href = url;
+    downloadLink.click();
+  });
   }
   
   const addtowallet= async(e)=>{
     console.log('Feature on the way...')
     // console.log(downdata)
     if(downdata){
-      // downloadFile(downdata.generatepkpass)
+      downloadFile(downdata.generatepkpass)
     }
   }
 
