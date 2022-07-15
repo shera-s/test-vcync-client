@@ -125,7 +125,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
       Resizer.imageFileResizer(
         file,
         90,
-        90,
+        100,
         "PNG",
         100,
         0,
@@ -134,7 +134,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
         },
         "base64",
         90,
-        90
+        100
       );
     });
 
@@ -150,7 +150,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
     try {
       const file = e.target.files[0];
       const image = await resizeFile(file);
-      console.log(image)
+      // console.log(image)
       setFile(image);
       setFormdetails((prev) => {
         return { ...prev, ["photo"]: image };
