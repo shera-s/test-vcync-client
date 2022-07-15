@@ -125,7 +125,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
       Resizer.imageFileResizer(
         file,
         90,
-        100,
+        90,
         "PNG",
         100,
         0,
@@ -134,7 +134,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
         },
         "base64",
         90,
-        100
+        90
       );
     });
 
