@@ -133,9 +133,10 @@ const User = () => {
           downdata.generatepkpass.file
         );
         // console.log(result);
+        // console.log("hii");
         // true
       } catch (e) {
-        console.log(e);
+        // console.log(e);
         // console.log("hii2");
       }
     }

@@ -350,6 +350,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
               type="date"
               className="block border border-grey-light bg-slate-100 w-full p-3 rounded mb-4 focus:outline-none"
               name="birthday"
+              required
               value={formDetails.birthday}
               onChange={handleChange}
             />
