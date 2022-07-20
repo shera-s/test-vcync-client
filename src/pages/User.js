@@ -122,9 +122,9 @@ const User = () => {
   };
 
   const addtowallet = async (e) => {
-    console.log(downdata);
+    // console.log(downdata);
     if (downdata) {
-      console.log("Feature on the way...");
+      // console.log("Feature on the way...");
       // downloadFile(downdata.generatepkpass)
       // if let url = URL(string: "wallet://") { UIApplication.shared.open(url) }
       // UIApplication.SharedApplication.OpenUrl(new NSUrl("shoebox://"));
@@ -132,12 +132,11 @@ const User = () => {
         const result = await WalletManager.addPassFromUrl(
           downdata.generatepkpass.file
         );
-        console.log(result);
-        console.log("hii");
+        // console.log(result);
         // true
       } catch (e) {
         console.log(e);
-        console.log("hii2");
+        // console.log("hii2");
       }
     }
   };
