@@ -282,6 +282,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
                 className="hidden"
                 ref={inputFile}
                 onChange={getFiles}
+                required
               />
             </div>
             <p className="mt-2 mb-4 text-red-700 text-center ">{imageError}</p>

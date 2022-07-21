@@ -104,40 +104,17 @@ const User = () => {
     img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
   };
 
-  const downloadFile = (data) => {
-    fetch(data.file, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/vnd.apple.pkpass",
-      },
-    })
-      .then((response) => response.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const downloadLink = document.createElement("a");
-        downloadLink.download = data.firstName + ".pkpass";
-        downloadLink.href = url;
-        downloadLink.click();
-      });
-  };
 
   const addtowallet = async (e) => {
     // console.log(downdata);
     if (downdata) {
-      // console.log("Feature on the way...");
-      // downloadFile(downdata.generatepkpass)
-      // if let url = URL(string: "wallet://") { UIApplication.shared.open(url) }
-      // UIApplication.SharedApplication.OpenUrl(new NSUrl("shoebox://"));
       try {
         const result = await WalletManager.addPassFromUrl(
           downdata.generatepkpass.file
         );
         // console.log(result);
-        // console.log("hii");
-        // true
       } catch (e) {
         // console.log(e);
-        // console.log("hii2");
       }
     }
   };
