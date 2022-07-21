@@ -282,7 +282,6 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
                 className="hidden"
                 ref={inputFile}
                 onChange={getFiles}
-                required
               />
             </div>
             <p className="mt-2 mb-4 text-red-700 text-center ">{imageError}</p>
@@ -351,7 +350,6 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
               type="date"
               className="block border border-grey-light bg-slate-100 w-full p-3 rounded mb-4 focus:outline-none"
               name="birthday"
-              required
               value={formDetails.birthday}
               onChange={handleChange}
             />
