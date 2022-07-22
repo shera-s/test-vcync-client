@@ -364,25 +364,23 @@ const extra = (extraInfo && extraInfo[0]?.title!== '') ? extraInfo : []
                 <div className="relative" key={i}>
 
             <label htmlFor="">
-              <input type="text" name="title" placeholder="Title" value={inputFields[i].title} onChange={e=>inputChange(e,i)} 
-                  list="titles"
-                />
-                <datalist id="titles">
-                  <option value="workUrl" />
-                  <option value="nickname" />
-                  <option value="nameSuffix" />
-                  <option value="namePrefix" />
-                  <option value="gender" />
-                  <option value="anniversay" />
-                  <option value="role" />
-                  <option value="homePhone" />
-                  <option value="cellPhone" />
-                  <option value="pagerPhone" />
-                  <option value="homeFax" />
-                  <option value="email" />
-                  <option value="homeAddress" />
-                  <option value="workAddress" />
-                </datalist>
+              <select type="text" name="title" placeholder="Title" value={inputFields[i].title} onChange={e=>inputChange(e,i)} >
+
+              <option value="" selected disabled hidden>Title</option>
+                  <option>workUrl</option>
+                  <option>nickname</option>
+                  <option>nameSuffix</option>
+                  <option>namePrefix</option>
+                  <option>gender</option>
+                  <option>role</option>
+                  <option>homePhone</option>
+                  <option>cellPhone</option>
+                  <option>pagerPhone</option>
+                  <option>homeFax</option>
+                  <option>email</option>
+                  <option>homeAddress</option>
+                  <option>workAddress</option>
+                  </select>
             </label>
                   <input
                     type="text"
