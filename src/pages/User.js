@@ -152,7 +152,7 @@ const User = () => {
                 </button>
               </Link>
             ) : (
-              <Link to="/profile">
+              <a href="/profile">
                 <button
                   type="submit"
                   className="w-full py-3 rounded-full bg-zinc-800 text-white hover:bg-green-900 focus:outline-none my-1 mt-4"
@@ -160,7 +160,7 @@ const User = () => {
                   <FaEdit className="w-12 inline" />
                   {t("Edit_your_profile")}
                 </button>
-              </Link>
+              </a>
             )}
 
             <div

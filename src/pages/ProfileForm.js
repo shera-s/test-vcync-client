@@ -24,7 +24,7 @@ const ProfileForm = () => {
   const [showError, setShowError] = useState(false);
   const [imageError, setImageError] = useState(false);
   const inputFile = useRef(null);
-const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
+const extra = (extraInfo && extraInfo[0]?.title!== '') ? extraInfo : []
   const [inputFields, setInputFields] = useState(extra);
 
   const [profileType, setProfileType] = useState('Business');
@@ -86,7 +86,7 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
 
   const addField = (e) => {
     e.preventDefault();
-    setInputFields([...inputFields, { extraInfo: "" }]);
+    setInputFields([...inputFields, { title:'' , value: "" }]);
   };
 
   const removeField = (i) => {
@@ -175,22 +175,11 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const {
-      firstName,
-      lastName,
-      workPhone,
-      workEmail,
-      organization,
-      title,
-      birthday,
-      url,
-      note,
-    } = formDetails;
     try {
       const profileFields = {
         user_id: user_id,
         userDetails: formDetails,
-        extraInfo: inputFields!==[] ? inputFields :{ extraInfo: "" },
+        extraInfo: inputFields!==[] ? inputFields :{ title: "" , value:''},
         qrCode:qrCode,
         profiletype:profileType,
         enable:true,
@@ -373,12 +362,35 @@ const extra = (extraInfo && extraInfo[0]?.extraInfo!== '') ? extraInfo : []
 {inputFields.map((v, i) => {
               return (
                 <div className="relative" key={i}>
+
+            <label htmlFor="">
+              <input type="text" name="title" placeholder="Title" value={inputFields[i].title} onChange={e=>inputChange(e,i)} 
+                  list="titles"
+                />
+                <datalist id="titles">
+                  <option value="workUrl" />
+                  <option value="nickname" />
+                  <option value="nameSuffix" />
+                  <option value="namePrefix" />
+                  <option value="gender" />
+                  <option value="anniversay" />
+                  <option value="role" />
+                  <option value="homePhone" />
+                  <option value="cellPhone" />
+                  <option value="pagerPhone" />
+                  <option value="homeFax" />
+                  <option value="email" />
+                  <option value="homeAddress" />
+                  <option value="workAddress" />
+                </datalist>
+            </label>
                   <input
                     type="text"
                     className="block border border-grey-light bg-slate-100 w-full p-3 rounded mb-4 focus:outline-none"
-                    name="extraInfo"
-                    value={inputFields[i].extraInfo}
+                    name="value"
+                    value={inputFields[i].value}
                     onChange={(e) => inputChange(e, i)}
+                    placeholder='Value'
                   />
 
                   <button

@@ -34,7 +34,8 @@ const GET_PROFILE = gql`
         username
       }
       extraInfo {
-        extraInfo
+        title
+        value
       }
     }
   }

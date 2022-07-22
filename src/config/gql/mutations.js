@@ -112,7 +112,8 @@ const PROFILE = gql`
         username
       }
       extraInfo {
-        extraInfo
+        title
+        value
       }
     }
   }
